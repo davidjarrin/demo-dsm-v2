@@ -22,13 +22,13 @@ jobs:
           maven-version: 4.0.0
 
       - name: Unit Tests
-        run:  mvn clean package
+        run: mvn clean package
       
       - name: Deploy and Get Secret DSM Senhasegura
-        env:
-          APPLICATION: ${{ secrets.APPLICATION }}
-          SYSTEM:      ${{ secrets.SYSTEM }}
-          ENVIRONMENT: ${{ secrets.ENVIRONMENT }}
+          env:
+            APPLICATION: ${{ secrets.APPLICATION }}
+            SYSTEM: ${{ secrets.SYSTEM }}
+            ENVIRONMENT: ${{ secrets.ENVIRONMENT }}
           run: |
             chmod 777 dsm
             chmod 777 .config.yaml
