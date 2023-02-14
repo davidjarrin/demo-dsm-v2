@@ -32,9 +32,7 @@ jobs:
           SYSTEM: ${{ secrets.SYSTEM }}
           ENVIRONMENT: ${{ secrets.ENVIRONMENT }}
         run: |
-              chmod 777 dsm
-              chmod 777 .config.yaml
-              ./dsm-linux-amd64 runb --app-name $APPLICATION --system $SYSTEM --environment $ENVIRONMENT --config .config.yaml --tool-name github
+            ./dsm-linux-amd64 runb --app-name $APPLICATION --system $SYSTEM --environment $ENVIRONMENT --config .config.yaml --tool-name github
 
       - name: Run Jar
         run: java -jar /target/demo-dsm-0.0.1-SNAPSHOT.jar
