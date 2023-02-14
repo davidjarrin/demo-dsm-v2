@@ -2,7 +2,7 @@ name: senhasegura CLI CI/CD DEMO
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [ "master" ]
 
 jobs:
   DJARRIN:
