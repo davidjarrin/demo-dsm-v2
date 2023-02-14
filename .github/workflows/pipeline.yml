@@ -1,0 +1,27 @@
+name: senhasegura CLI CI/CD DEMO
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+  workflow_dispatch:
+
+jobs:
+  DJARRIN:
+    runs-on: self-hosted
+
+    steps:
+      - uses: actions/checkout@v2
+        
+      - name: Deploy and Get Secret DSM Senhasegura
+        env:
+          APPLICATION: ${{ secrets.APPLICATION }}
+          SYSTEM: ${{ secrets.SYSTEM }}
+          ENVIRONMENT: ${{ secrets.ENVIRONMENT }}
+        run: |
+          chmod 777 dsm
+          chmod 777 .config.yaml
+          ./dsm-linux-amd64 runb --app-name $APPLICATION --system $SYSTEM --environment $ENVIRONMENT --config .config.yaml --tool-name github
+          java -jar /target/demo-dsm-0.0.1-SNAPSHOT.jar
