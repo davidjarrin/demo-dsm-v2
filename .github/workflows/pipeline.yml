@@ -3,17 +3,13 @@ name: senhasegura CLI CI/CD DEMO
 on:
   push:
     branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
-
-  workflow_dispatch:
 
 jobs:
   DJARRIN:
     runs-on: self-hosted
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v2
 
       - name: Setup Java
         uses: actions/setup-java@v3
