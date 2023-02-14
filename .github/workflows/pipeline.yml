@@ -9,31 +9,31 @@ jobs:
     runs-on: self-hosted
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+          uses: actions/checkout@v3
 
       - name: Setup Java
-        uses: actions/setup-java@v3
-        with:
-          java-version: 17
+          uses: actions/setup-java@v3
+          with:
+            java-version: 17
       
       - name: Setup Maven
-        uses: stCarolas/setup-maven@v4.5
-        with:
-          java-version: 4.0.0
+          uses: stCarolas/setup-maven@v4.5
+          with:
+            java-version: 4.0.0
 
       - name: Unit Tests
-        run: mvn clean package
+          run: mvn clean package
       
       - name: Deploy and Get Secret DSM Senhasegura
-        env:
-          APPLICATION: ${{ secrets.APPLICATION }}
-          SYSTEM: ${{ secrets.SYSTEM }}
-          ENVIRONMENT: ${{ secrets.ENVIRONMENT }}
-        run: |
-          chmod 777 dsm
-          chmod 777 .config.yaml
-          ./dsm-linux-amd64 runb --app-name $APPLICATION --system $SYSTEM --environment $ENVIRONMENT --config .config.yaml --tool-name github
+          env:
+            APPLICATION: ${{ secrets.APPLICATION }}
+            SYSTEM: ${{ secrets.SYSTEM }}
+            ENVIRONMENT: ${{ secrets.ENVIRONMENT }}
+          run: |
+            chmod 777 dsm
+            chmod 777 .config.yaml
+            ./dsm-linux-amd64 runb --app-name $APPLICATION --system $SYSTEM --environment $ENVIRONMENT --config .config.yaml --tool-name github
 
       -name: Run Jar
-        run: java -jar /target/demo-dsm-0.0.1-SNAPSHOT.jar
+          run: java -jar /target/demo-dsm-0.0.1-SNAPSHOT.jar
           
