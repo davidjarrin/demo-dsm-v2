@@ -36,4 +36,4 @@ jobs:
             ./dsm-linux-amd64 runb --application $APPLICATION --system $SYSTEM --environment $ENVIRONMENT --config .config.yaml --tool github
           
       - name: Run Jar
-        run: java -jar /target/demo-dsm-0.0.1-SNAPSHOT.jar
+        run: java -jar target/demo-dsm-0.0.1-SNAPSHOT.jar
